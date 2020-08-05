@@ -4,7 +4,7 @@ import os
 class Config:
     ENV = 'development'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:密码@远程服务器IP:3306/FlaskBlog'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@47.94.34.6:3306/FlaskBlog'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
     SECRET_KEY = 'dfgfdggrgsfzxcw2'
