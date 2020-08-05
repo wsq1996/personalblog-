@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% block title %}
+            <title>{{ tagType.type_name }}</title>
+{% endblock %}
+    {% block navbar %}
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+        	<div class="container">
+				<div class="row banner_inner">
+					<div class="col-lg-5"></div>
+					<div class="col-lg-7">
+						<div class="banner_content text-center">
+							<h2>{{ tagType.type_name }}</h2>
+							<div class="page_link">
+                                <a href="{{ url_for('user.index') }}?tid={{ tagType.id }}">{{ tagType.type_name }}</a>
+								<a href="{{ url_for('user.index') }}">首页</a>
+
+							</div>
+						</div>
+					</div>
+				</div>
+        	</div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+    {% endblock %}
+
+{% block contents %}
+    <style>
+    .blog_style1{
+        margin-top: 100px;
+    }
+    .fa-weixin{
+        position: relative;
+    }
+    .fa-qq{
+        position: relative;
+    }
+    .fa-weixin::after{
+        content: url("/static/img/weixin.jpg");
+        position: absolute;
+        {#right: -28px;#}
+        {#top: -135px;#}
+        z-index: 99;
+        width: 110px;
+        height: 110px;
+        border: 5px solid #0095ba;
+        border-radius: 4px;
+        transform-origin: top right;
+        transform: scale(0);
+        opacity: 0;
+        {#-webkit-transform: all .4s ease-in-out;#}
+        {#-o-transform: all .4s ease-in-out;#}
+    }
+    .fa-qq::after{
+        content: url("/static/img/qq.jpg");
+        position: absolute;
+        {#right: -28px;#}
+        {#top: -135px;#}
+        z-index: 99;
+        width: 110px;
+        height: 138px;
+        border: 5px solid #0095ba;
+        border-radius: 4px;
+        transform-origin: top right;
+        transform: scale(0);
+        opacity: 0;
+    }
+    .fa-weixin:hover::after{
+        transform: scale(1);
+        opacity: 1;
+    }
+    .fa-qq:hover::after{
+        transform: scale(1);
+        opacity: 1;
+    }
+    </style>
+        <!--================Blog Area =================-->
+        <section class="blog_area p_120">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8">
+                        <div class="blog_left_sidebar">
+                            {% for article in articles.items %}
+                            <article class="blog_style1 ">
+                                    <div class="blog_text">
+                                        <div class="blog_text_inner">
+                                            <div class="cat">
+                                                <a class="cat_btn" href="#">{{ article.user.username }}</a>
+                                                <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{{ article.pdatetime }}</a>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <span class="glyphicon glyphicon-star" aria-hidden="true">收藏:{{ article.saveNum }}</span><span>点击:{{ article.clickNum }}</span><span>点赞:{{ article.love }}</span>
+    {#											<a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 05</a>#}
+                                            </div>
+                                            <a href="{{ url_for('article.article_detail') }}?aid={{ article.id }}"><h4>{{ article.title }}</h4></a>
+                                            <p>{{ article.content | cdecodeindex | safe }}</p>
+                                            <a class="blog_btn" href="{{ url_for('article.article_detail') }}?aid={{ article.id }}">更多</a>
+                                        </div>
+                                    </div>
+
+                            </article>
+                            {% endfor %}
+                            <nav class="blog-pagination justify-content-center d-flex">
+		                        <ul class="pagination">
+		                            <li {% if not articles.has_prev %}class="disabled page-item"{% else %} class="page-item" {% endif %}>
+		                                <a href="{{ url_for('user.index') }}?page={{ articles.prev_num }}" class="page-link" aria-label="Previous">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-left"></span>
+		                                    </span>
+		                                </a>
+		                            </li>
+                                    {% for page_num in range(1,articles.pages + 1) %}
+                                        <li {% if articles.page == page_num %}class="page-item active" {% endif %}>
+                                            <a href="{{ url_for('user.index') }}?page={{ page_num }}" class="page-link">{{ page_num }}</a></li>
+                                    {% endfor %}
+		                            <li {% if not articles.has_next %}class="disabled page-item"{% else %} class="page-item" {% endif %}>
+		                                <a href="{{ url_for('user.index') }}?page={{ articles.next_num }}" class="page-link" aria-label="Next">
+		                                    <span aria-hidden="true">
+		                                        <span class="lnr lnr-chevron-right"></span>
+		                                    </span>
+		                                </a>
+		                            </li>
+		                        </ul>
+		                    </nav>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+{#                            搜索#}
+                            <aside class="single_sidebar_widget search_widget">
+                                <form action="{{ url_for('user.index') }}">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Search">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default" ><i class="lnr lnr-magnifier"></i></button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </form>
+                                <div class="br"></div>
+                            </aside>
+{#                            作者联系方式#}
+                            <aside class="single_sidebar_widget author_widget">
+                                <img style="width: 310px;height: 250px" src=" {{ url_for('static',filename='img/me.jpg') }}" alt="">
+                                <h4>阿庆</h4>
+                                <p>Python工程师</p>
+                                <div class="social_icon">
+                                    <a href="javescipt:"><i class="fa fa-weixin"></i></a>
+                                    <a href="javascipt:"><i class="fa fa-qq"></i></a>
+                                </div>
+                                <p>人生纵然无味，也要用热情拥抱它.
+                                    生命中的每一秒都是现场直播，用快乐填满每一帧画面.
+                                </p>
+                                <div class="br"></div>
+                            </aside>
+{#                            热榜#}
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">热榜</h3>
+                                {% for article in popular_article %}
+                                    <div class="media post_item">
+                                        <img src="/static/img/blog/popular-post/post1.jpg" alt="post">
+                                        <div class="media-body">
+                                            <a href="{{ url_for('article.article_detail') }}?aid={{ article.id }}"><h3>{{ article.title }}</h3></a>
+                                            <p><span class="fa fa-fire" aria-hidden="true">&nbsp;&nbsp;{{ article.clickNum }}</span></p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single-sidebar-widget newsletter_widget">
+                                <h4 class="widget_title">Newsletter</h4>
+                                <div class="form-group d-flex flex-row">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                                    </div>
+                                    <a href="#" class="bbtns"><i class="lnr lnr-arrow-right"></i></a>
+                                </div>
+                                <div class="br"></div>
+                            </aside>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Blog Area =================-->
+
+{% endblock %}

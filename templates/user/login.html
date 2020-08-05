@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}
+            <title>登录</title>
+{% endblock %}
+{% block contents %}
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style>
+        #container{
+            -padding-top: 30px;
+            width: 100%;
+            height: 1000px;
+            text-align: center;
+            margin-top: 180px;
+            -background: red;
+            -margin: 0 auto;
+
+        }
+        form{
+            width: 500px;
+            height: 800px;
+            margin-top: 40px;
+            margin-left: 500px;
+            font-size: 18px;
+        }
+        input {
+            height: 30px;
+            width: 12em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"],input[type="reset"]{
+            height: 30px;
+            width: 5em;
+            margin-top: 5px;
+            margin-bottom: 6px;
+        }
+        #tips{
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+    <div id="container">
+        <h1>用户登录</h1>
+        <hr>
+        <p id="tips">{{ msg }}</p>
+        <form action="{{ url_for('user.login') }}" method="post">
+            <table>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" id="email" name="email" placeholder="请输入正确的邮箱" onblur="validate_email(this.value)"></td>
+                    <td id="test_email"></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="password" id="password" name="password" placeholder="6位密码由数字和字母组成" onblur="validate_password(this.value)"></td>
+                    <td><p id="test_pw"></p></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submit_form" value="登录" -onclick="return validate_form()">
+                        <input type="reset" value="重置">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+{% endblock %}

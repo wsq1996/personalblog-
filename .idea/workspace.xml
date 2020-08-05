@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cd4ab354-07aa-475e-a9de-6ecd53cc7140" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/apps/user/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/user/view.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="FlaskBlog@47.94.34.6" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="FlaskBlog@47.94.34.6" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="FlaskBlog@47.94.34.6" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="FlaskBlog: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Flask Main" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1cRHMWGLKrd0ZwTNY73H18NUYeD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../newsapi" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\python\demo\gitee-test\flask_code\FlaskBlog\static\img" />
+      <recent name="G:\python\demo\gitee-test\flask_code\FlaskBlog\static\img\banner" />
+      <recent name="G:\python\demo\gitee-test\flask_code\FlaskBlog\jlstatic" />
+      <recent name="G:\python\demo\gitee-test\flask_code\FlaskBlog\static" />
+      <recent name="G:\python\demo\gitee-test\flask_code\FlaskBlog\static\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\python\demo\gitee-test\flask_code\FlaskBlog\static\upload" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="FlaskBlog" type="Python.FlaskServer">
+      <module name="FlaskBlog" />
+      <option name="target" value="$PROJECT_DIR$/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd4ab354-07aa-475e-a9de-6ecd53cc7140" name="Default Changelist" comment="" />
+      <created>1590484437776</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590484437776</updated>
+      <workItem from="1590484440635" duration="8489000" />
+      <workItem from="1590809198541" duration="16306000" />
+      <workItem from="1590842873510" duration="3320000" />
+      <workItem from="1590997718976" duration="443000" />
+      <workItem from="1591012292937" duration="9325000" />
+      <workItem from="1591102064169" duration="8778000" />
+      <workItem from="1591146140105" duration="37000" />
+      <workItem from="1591189405451" duration="3096000" />
+      <workItem from="1591192808012" duration="4331000" />
+      <workItem from="1591237076285" duration="6739000" />
+      <workItem from="1591275845835" duration="3795000" />
+      <workItem from="1591360850391" duration="2587000" />
+      <workItem from="1591364182869" duration="3828000" />
+      <workItem from="1591955065027" duration="1202000" />
+      <workItem from="1592053074994" duration="7300000" />
+      <workItem from="1592101038940" duration="840000" />
+      <workItem from="1592113720558" duration="3153000" />
+      <workItem from="1592785684185" duration="660000" />
+      <workItem from="1592828965374" duration="224000" />
+      <workItem from="1592829460502" duration="293000" />
+      <workItem from="1592831083995" duration="46000" />
+      <workItem from="1592834267040" duration="39000" />
+      <workItem from="1594610096979" duration="2822000" />
+      <workItem from="1594642224959" duration="1031000" />
+      <workItem from="1594643415455" duration="612000" />
+      <workItem from="1594812456476" duration="12000" />
+      <workItem from="1594812480252" duration="129000" />
+      <workItem from="1594991016807" duration="3136000" />
+      <workItem from="1595641581163" duration="1296000" />
+      <workItem from="1595665492579" duration="237000" />
+      <workItem from="1596589074633" duration="108000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="27" key="#Deployment" timestamp="1594992045852">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="27" key="#Deployment/0.0.1366.738@0.0.1366.738" timestamp="1594992045852" />
+    <state x="275" y="6" key="#Options" timestamp="1594610145352">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="6" key="#Options/0.0.1366.738@0.0.1366.738" timestamp="1594610145352" />
+    <state x="550" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590498116468">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="550" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1590498116468" />
+    <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592056663395">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.738@0.0.1366.738" timestamp="1592056663395" />
+    <state x="538" y="132" key="FileChooserDialogImpl" timestamp="1594995320075">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="601" y="130" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592829651668" />
+    <state x="538" y="132" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1594995320075" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1592831102225">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1592831102225" />
+    <state x="392" y="8" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1591102222531">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="392" y="8" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1366.738@0.0.1366.738" timestamp="1591102222531" />
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1592829464894">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592829464894" />
+    <state x="561" y="99" key="ftp.server.browser" timestamp="1592056965712">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="561" y="99" key="ftp.server.browser/0.0.1366.738@0.0.1366.738" timestamp="1592056965712" />
+    <state x="550" y="262" key="publish.login" timestamp="1594991262295">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="550" y="262" key="publish.login/0.0.1366.738@0.0.1366.738" timestamp="1594991262295" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/user/index.html</url>
+          <line>181</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

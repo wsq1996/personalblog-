@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>{{ article.title }}</title>
+{% endblock %}
+    {% block navbar %}
+<!--================Home Banner Area =================-->
+        <section class="banner_area">
+        	<div class="container">
+				<div class="row banner_inner">
+					<div class="col-lg-5"></div>
+					<div class="col-lg-7">
+						<div class="banner_content text-center">
+							<h2>文章详情</h2>
+							<div class="page_link">
+								<a href="{{ url_for('user.index') }}">首页</a>
+								<a href="{{ url_for('article.article_detail') }}?aid={{ article.id }}">{{ article.title[:6] }}...</a>
+							</div>
+						</div>
+					</div>
+				</div>
+        	</div>
+        </section>
+        <!--================End Home Banner Area =================-->
+    {% endblock %}
+{% block contents %}
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style>
+    .fa-weixin{
+        position: relative;
+    }
+    .fa-qq{
+        position: relative;
+    }
+    .fa-weixin::after{
+        content: url("/static/img/weixin.jpg");
+        position: absolute;
+        {#right: -28px;#}
+        {#top: -135px;#}
+        z-index: 99;
+        width: 110px;
+        height: 110px;
+        border: 5px solid #0095ba;
+        border-radius: 4px;
+        transform-origin: top right;
+        transform: scale(0);
+        opacity: 0;
+        {#-webkit-transform: all .4s ease-in-out;#}
+        {#-o-transform: all .4s ease-in-out;#}
+    }
+    .fa-qq::after{
+        content: url("/static/img/qq.jpg");
+        position: absolute;
+        {#right: -28px;#}
+        {#top: -135px;#}
+        z-index: 99;
+        width: 110px;
+        height: 138px;
+        border: 5px solid #0095ba;
+        border-radius: 4px;
+        transform-origin: top right;
+        transform: scale(0);
+        opacity: 0;
+    }
+    .fa-weixin:hover::after{
+        transform: scale(1);
+        opacity: 1;
+    }
+    .fa-qq:hover::after{
+        transform: scale(1);
+        opacity: 1;
+    }
+    </style>
+<section class="blog_area p_120 single-post-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+       					<div class="main_blog_details">
+{#       						<img class="img-fluid" src="/static/img/blog/news-blog.jpg" alt="">#}
+       						<a href="#"><h4>{{ article.title }}</h4></a>
+       						<div class="user_details">
+       							<div class="float-left">
+       								<a href="{{ url_for('article.article_detail') }}?aid={{ article.id }}">{{ article.article_type.type_name }}</a>
+       							</div>
+       							<div class="float-right">
+       								<div class="media">
+       									<div class="media-body">
+       										<h5>{{ article.user.username }}</h5>
+       										<p>{{ article.pdatetime }}</p>
+       									</div>
+       									<div class="d-flex">
+{#                                            用户头像#}
+       										<img style="width: 40px;height: 40px" src="{% if article.user.icon %}{{ url_for('static',filename=article.user.icon.replace('\\','/')) }}
+                                            {% else %} {{ url_for('static',filename='img/touxiang.jpg') }}{% endif %}" alt="">
+       									</div>
+       								</div>
+       							</div>
+       						</div>
+{#							<blockquote class="blockquote">#}
+								<p class="mb-0">{{ article.content | cdecodedetail | safe}}</p>
+{#							</blockquote>#}
+      						<div class="news_d_footer">
+      							<p href="#"><i class="lnr lnr fa-fire-extinguisher"></i>{{ article.clickNum }} 人浏览过</p>
+      							<a class="justify-content-center ml-auto" href="#"><i class="lnr lnr lnr-bubble"></i>{{ article.comments|length }}&nbsp;Comments</a>
+      							<div class="news_socail ml-auto">
+									<a class="saveclick"><i class="fa fa-star-half-empty"></i><span id="save" tag="0">{{ article.saveNum }}</span></a>
+
+									<a class="loveclick"><i class="fa fa-thumbs-up"></i><span id="love" tag="0">{{ article.love }}</span></a>
+								</div>
+      						</div>
+       					</div>
+
+{#                        评论#}
+                        <div class="comments-area">
+                            <h4>评论留言</h4>
+                            <div class="comment-list">
+                                {% if comments.items %}
+                                    {% for comment in comments.items %}
+                                    <div style="margin-top: 20px" class="single-comment justify-content-between d-flex">
+                                        <div class="user justify-content-between d-flex">
+                                            <div class="thumb">
+                                                <img style="width: 40px;height: 40px" src="{% if comment.user.icon %}{{ url_for('static',filename=comment.user.icon.replace('\\','/')) }}
+                                                {% else %} {{ url_for('static',filename='img/touxiang.jpg') }}{% endif %}" alt="">
+                                            </div>
+                                            <div class="desc">
+                                                <h5>{{ comment.user.username }}</h5>
+                                                <p class="date">{{ comment.cdatetime }}</p>
+                                                <p class="comment">
+                                                    {{ comment.comment }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    {% else %}
+                                        <p class="comment">
+                                            还没有评论。快去发表你的看法吧！
+                                        </p>
+                                    {% endif %}
+
+                            </div>
+                        </div>
+                        <div class="comment-form">
+                            <h4>发表评论</h4>
+                            <form action="{{ url_for('article.article_comment') }}" method="post">
+{#                                <div class="form-group form-inline">#}
+{#                                  <div class="form-group col-lg-6 col-md-6 name">#}
+{#                                    <input type="text" class="form-control" id="name" placeholder="Enter Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">#}
+{#                                  </div>#}
+{#                                  <div class="form-group col-lg-6 col-md-6 email">#}
+{#                                    <input type="email" class="form-control" id="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">#}
+{#                                  </div>#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <input type="text" class="form-control" id="subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">#}
+{#                                </div>#}
+                                <input type="hidden" name="aid" value="{{ article.id }}">
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" name="comment" placeholder="快来发表你的看法吧！" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                </div>
+                                <input type="submit" value="评论">
+{#                                <a href="#" class="primary-btn submit_btn">评论</a>#}
+                            </form>
+                        </div>
+        			</div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget search_widget">
+                                <form action="{{ url_for('user.index') }}">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control" placeholder="Search">
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-default" ><i class="lnr lnr-magnifier"></i></button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </form>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget author_widget">
+                                <img style="width: 310px;height: 250px" src=" {{ url_for('static',filename='img/me.jpg') }}" alt="">
+                                <h4>阿庆</h4>
+                                <p>Python工程师</p>
+                                <div class="social_icon">
+                                    <a href="javascipt:"><i class="fa fa-weixin"></i></a>
+                                    <a href="javascipt:"><i class="fa fa-qq"></i></a>
+                                </div>
+                                 <p>人生纵然无味，也要用热情拥抱它.
+                                    生命中的每一秒都是现场直播，用快乐填满每一帧画面.
+                                </p>
+                                <div class="br"></div>
+                            </aside>
+                            <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">热榜</h3>
+                                {% for article in popular_article %}
+                                    <div class="media post_item">
+                                        <img src="/static/img/blog/popular-post/post1.jpg" alt="post">
+                                        <div class="media-body">
+                                            <a href="{{ url_for('article.article_detail') }}?aid={{ article.id }}"><h3>{{ article.title }}</h3></a>
+                                            <p><span class="fa fa-fire" aria-hidden="true">&nbsp;&nbsp;{{ article.clickNum }}</span></p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="br"></div>
+                            </aside>
+{#                        广告位#}
+{#                            <aside class="single_sidebar_widget">#}
+{#                                <a href="#"><img class="img-fluid" src="/static/img/blog/add.jpg" alt=""></a>#}
+{#                                <div class="br"></div>#}
+{#                            </aside>#}
+                            <aside class="single-sidebar-widget tag_cloud_widget">
+                                <h4 class="widget_title">我的标签</h4>
+                                <ul class="list">
+                                    {% for type in types %}
+                                        <li><a href="{{ url_for('article.articleType') }}?tid={{ type.id }}">{{ type.type_name }}</a></li>
+                                    {% endfor %}
+
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    <script>
+    $(function () {
+    //收藏
+        $(".saveclick").click(function () {
+            let _this = $(this);
+            let span_ = $("#save");
+            let tag = span_ .attr('tag');
+            $.get('{{ url_for('article.article_save') }}',{aid:{{article.id}},tag:tag},function (data) {
+                span_.text(data.num);
+            });
+            if (tag==1){
+                _this.css({'color':''});
+                span_.attr('tag','0');
+            }else{
+                _this.css({'color':'red'});
+                span_.attr('tag','1');
+            }
+        });
+        $(".loveclick").click(function () {
+            let _this = $(this);
+            let span_ = $("#love");
+            let tag = span_ .attr('tag');
+            $.get('{{ url_for('article.article_love') }}',{aid:{{article.id}},tag:tag},function (data) {
+                span_.text(data.num);
+            });
+            if (tag==1){
+                _this.css({'color':''});
+                span_.attr('tag','0');
+            }else{
+                _this.css({'color':'red'});
+                span_.attr('tag','1');
+            }
+        })
+    })
+    </script>
+{% endblock %}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+{% block title %}
+            <title>首页</title>
+{% endblock %}
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{#        <link rel="icon" href="{{ url_for('static',filename='img/favicon.png') }}" type="image/png">#}
+
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='vendors/linericon/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='vendors/owl-carousel/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='vendors/lightbox/simpleLightbox.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='vendors/nice-select/css/nice-select.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='vendors/animate-css/animate.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='vendors/jquery-ui/jquery-ui.css') }}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/responsive.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/center.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+    </head>
+    <body>
+    {% block head %}
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+			<div class="main_menu">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container box_1620">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="{{ url_for('user.index') }}"><img src="/static/img/logo.png" alt=""></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav">
+								<li class="nav-item active"><a class="nav-link" href="{{ url_for('user.index') }}">首页</a></li>
+								<li class="nav-item"><a class="nav-link" href="{{ url_for('article.articleType') }}?tid={{ types[0].id }}">Python</a></li>
+								<li class="nav-item"><a class="nav-link" href="{{ url_for('article.articleType') }}?tid={{ types[1].id }}">Linux</a></li>
+								<li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">数据库</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="{{ url_for('article.articleType') }}?tid={{ types[2].id }}">Mysql</a></li>
+										<li class="nav-item"><a class="nav-link" href="{{ url_for('article.articleType') }}?tid={{ types[3].id }}">Redis</a></li>
+									</ul>
+								</li>
+{#								<li class="nav-item"><a class="nav-link" href="{{ url_for('user.about_me') }}">关于我</a></li>#}
+							</ul>
+                             <ul class="nav navbar-nav navbar-right header_social ml-auto">
+                                {% if user %}
+                                    <li>
+                                        <img src="{% if user.icon %} {{ url_for('static',filename=user.icon.replace('\\', '/')) }} {% else %}{{ url_for('static',filename='upload/tx.jpg') }}{% endif %}" alt="" width="30"
+                                            height="30" style="border-radius: 15px;margin-top: 8px"></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false">
+                                            欢迎！{{ user.username }}<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ url_for('user.user_center') }}">个人中心</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="{{ url_for('user.logout') }}">退出</a></li>
+                                        </ul>
+                                    </li>
+                                {% else %}
+                                    <li><a href="{{ url_for('user.login') }}">登录</a></li>
+                                    <li><a href="{{ url_for('user.register') }}">注册</a></li>
+                                {% endif %}
+                            </ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="logo_part">
+				<div class="container">
+					<a class="logo" href="#"><img src="/static/img/logo.png" alt=""></a>
+				</div>
+			</div>
+        </header>
+        <!--================Header Menu Area =================-->
+
+    {% endblock %}
+    {% block navbar %}
+
+    {% endblock %}
+    {% block contents %}
+
+    {% endblock %}
+
+        <!--================ start footer Area  =================-->
+        <footer class="footer-area p_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3  col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6 class="footer_title">About Me</h6>
+                            <p>Life is not abandoned, even if there is a strong wind</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6 class="footer_title">Newsletter</h6>
+                            <p>Stay updated with our latest trends</p>
+                            <div id="mc_embed_signup">
+                                <form target="_blank" action="" method="get" class="subscribe_form relative">
+                                    <div class="input-group d-flex flex-row">
+                                        <input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                        <button class="btn sub-btn"><span class="lnr lnr-arrow-right"></span></button>
+                                    </div>
+                                    <div class="mt-10 info"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget instafeed">
+                            <h6 class="footer_title">Instagram Feed</h6>
+                            <ul class="list instafeed d-flex flex-wrap">
+                                <li><img src="/static/img/instagram/Image-01.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-02.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-03.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-04.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-05.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-06.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-07.jpg" alt=""></li>
+                                <li><img src="/static/img/instagram/Image-08.jpg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget f_social_wd">
+                            <h6 class="footer_title">Follow Me</h6>
+                            <p>Let us be social</p>
+                            <div class="f_social">
+                            	<a href="#"><i class="fa fa-weixin"></i></a>
+								<a href="#"><i class="fa fa-qq"></i></a>
+								<a href="#"><i class="fa fa-weibo"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                    <p class="col-lg-12 footer-text text-center"><a target="_blank" href="http://www.beian.miit.gov.cn/">鲁ICP备20018130号</a></p>
+                </div>
+            </div>
+        </footer>
+		<!--================ End footer Area  =================-->
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{{ url_for('static',filename='js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/popper.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/stellar.js') }}"></script>
+        <script src="{{ url_for('static',filename='vendors/lightbox/simpleLightbox.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='vendors/nice-select/js/jquery.nice-select.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='vendors/isotope/imagesloaded.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='vendors/isotope/isotope-min.js') }}"></script>
+        <script src="{{ url_for('static',filename='vendors/owl-carousel/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='vendors/jquery-ui/jquery-ui.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.ajaxchimp.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/mail-script.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+        <script src="{{ url_for('static',filename='tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/center.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/login.js') }}"></script>
+    </body>
+</html>

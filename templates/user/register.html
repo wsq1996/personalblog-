@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block contents %}
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <style>
+        #container{
+            -padding-top: 30px;
+            width: 1000px;
+            height: 600px;
+            text-align: center;
+            -background: red;
+            -margin: 0 auto;
+        }
+        form{
+            width: 500px;
+            height: 800px;
+            margin: 50px auto auto auto;
+            font-size: 18px;
+        }
+        input {
+            height: 30px;
+            width: 12em;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"],input[type="reset"]{
+            height: 30px;
+            width: 5em;
+            margin-top: 5px;
+            margin-bottom: 6px;
+        }
+    </style>
+    <div id="container">
+        <h1>用户注册</h1>
+        <hr>
+        <form action="{{ url_for('user.register') }}" method="post">
+            <table>
+                <tr>
+                    <td>用户名：</td>
+                    <td><input type="text" name="username" id="username" placeholder="最对输入10个字符" onblur="validate_username(this.value)"></td>
+                    <td id="test_username"></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" id="email" name="email" placeholder="请输入正确的邮箱" onblur="validate_email(this.value)"></td>
+                    <td id="test_email"></td>
+                </tr>
+                <tr>
+                    <td>手机号：</td>
+                    <td><input type="text" id="phone" name="phone" placeholder="请输入正确的手机号码" onblur="validate_phone(this.value)"></td>
+                    <td><p id="test_phone"></p></td>
+                </tr>
+                <tr>
+                    <td>密码：</td>
+                    <td><input type="password" id="password" name="password" placeholder="6位密码由数字和字母组成" onblur="validate_password(this.value)"></td>
+                    <td><p id="test_pw"></p></td>
+                </tr>
+                <tr>
+                    <td>确认密码：</td>
+                    <td><input type="password" id="repassword" name="repassword" placeholder="请确保两次密码一致！"onblur="validate_password2(this.value)"></td>
+                    <td><p id="test_pw2"></p></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" id="submit_form" value="注册" -onclick="return validate_form()">
+                        <input type="reset" value="重置">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        function validate_username(username) {
+            let test_username= $("#test_username")
+            if (username.length >0 && username.length <= 10){
+                test_username.css({'color':'green','font-size':'14px'})
+                test_username.text("√用户名可用")
+            }else{
+                test_username.css({'color':'red','font-size':'14px'})
+                test_username.text("用户名错误")
+            }
+        }
+        function validate_email(email) {
+            var emailReg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            let test_email = $("#test_email")
+            if (email != "" && email.search(emailReg) != -1){
+                test_email.css({'color':'green','font-size':'14px'})
+                test_email.text("√邮箱格式正确")
+            }else{
+                test_email.css({'color':'red','font-size':'14px'})
+                test_email.text("邮箱格式错误")
+            }
+        }
+        function validate_password(password) {
+            var passwordReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6}$/;
+            let test_password = $("#test_pw")
+            if (password != "" && password.search(passwordReg) != -1){
+                test_password.css({'color':'green','font-size':'14px'})
+                test_password.text("√密码格式正确")
+            }else{
+                 test_password.css({'color':'red','font-size':'14px'})
+                test_password.text("密码格式错误")
+            }
+        }
+        function validate_password2(repassword) {
+            var password = $("#password").val();
+            let test_pssword2 = $("#test_pw2")
+            if (password == ''){
+                test_pssword2.css({'color':'red','font-size':'14px'})
+                test_pssword2.text("密码不为空")
+            }else if(password==repassword){
+                test_pssword2.css({'color':'green','font-size':'14px'})
+                test_pssword2.text("√两次输入的密码相同")
+            }else{
+                test_pssword2.css({'color':'red','font-size':'14px'})
+                test_pssword2.text("两次输入的密码不相同")
+            }
+        }
+        function validate_phone(phone){
+            let sphone = $("#phone")
+            let test_phone = $("#test_phone")
+            if (phone.length == 11){
+                $.get('#',{phone:phone},function (data) {
+                    if (data.code==200){
+                        test_phone.css({'color':'green','font-size':'14px'})
+                        test_phone.text(data)
+                    }
+                })
+            }else{
+                test_phone.css({"color":"red","font-size":"14px"})
+                test_phone.text('手机号码格式错误')
+            }
+
+        }
+        {#function validate_form() {#}
+        {#    var username = $("#username").val()#}
+        {#    var email = $("#email").val()#}
+        {#    var password = $("#password").val()#}
+        {#    var repassword = $("#repassword").val()#}
+        {#    var emailReg=/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;#}
+  		{#    var passwordReg=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6}$/;#}
+        {#    if (username!=''&&username.length>0&&username<=10){#}
+        {#        if (email!=''&&emailReg.test(email)){#}
+        {#            if ()#}
+        {#        }else{#}
+        {#            alert('邮箱格式不正确，请重新填写')#}
+        {#        }#}
+        {#    }else {#}
+        {#        alert('用户名不正确，请重新填写')#}
+        {#    }#}
+        {#}#}
+
+    </script>
+{% endblock %}
