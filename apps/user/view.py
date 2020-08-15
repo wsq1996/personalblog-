@@ -71,6 +71,7 @@ def index():
 # 注册
 @user_bp.route('/register', methods=['GET', 'POST'])
 def register():
+    user, types = user_type()
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
@@ -87,8 +88,8 @@ def register():
             db.session.commit()
             return redirect(url_for('user.index'))
         else:
-            return render_template('user/register.html', msg='两次密码不一致')
-    return render_template('user/register.html')
+            return render_template('user/register.html', msg='两次密码不一致', types=types)
+    return render_template('user/register.html', types=types)
 
 
 # 登录
